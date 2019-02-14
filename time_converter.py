@@ -9,8 +9,12 @@ def time_converter(time):
     for k, v in replace.items():
         res = res.replace(k, v)
 
-    print(res)
-    return res
+    return re.sub('^0', '', res)
+
+
+def time_converter1(time):
+    h, m = map(int, time.split(':'))
+    return f"{(h-1)%12+1}:{m:02d} {'ap'[h>11]}.m."
 
 
 if __name__ == '__main__':
