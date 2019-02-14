@@ -3,7 +3,7 @@ import re
 import string
 
 
-def checkio(text: str) -> str:
+def checkio3(text: str) -> str:
     counter = Counter(re.sub('[^a-z]', '', text.lower()))
     frequency = counter.most_common()
     count_top = frequency[0][1]
@@ -15,6 +15,8 @@ def checkio1(text):
     text = text.lower()
     return max(string.ascii_lowercase, key=text.count)
 
+
+def checkio(text): return max(string.ascii_lowercase, key=text.lower().count)
 
 if __name__ == '__main__':
     print("Example:")
