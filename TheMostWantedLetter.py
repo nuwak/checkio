@@ -1,16 +1,19 @@
 from collections import Counter
 import re
+import string
 
 
 def checkio(text: str) -> str:
-    text = re.sub('[\W]', '', text)
-    frec = Counter(text.lower())
-    most_common = frec.most_common(1)
+    counter = Counter(re.sub('[^a-z]', '', text.lower()))
+    frequency = counter.most_common()
+    count_top = frequency[0][1]
+    equal_values = [i for i in frequency if i[1] == count_top]
+    return sorted(equal_values)[0][0]
 
-    if most_common[0][1] == 1:
-        return sorted(frec)[0]
 
-    return frec.most_common(1)[0][0]
+def checkio1(text):
+    text = text.lower()
+    return max(string.ascii_lowercase, key=text.count)
 
 
 if __name__ == '__main__':
