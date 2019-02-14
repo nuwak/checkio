@@ -1,15 +1,14 @@
 from datetime import datetime
-import re
 
 
 def time_converter(time):
     replace = {"PM": "p.m.", "AM": "a.m."}
-    res = datetime.strptime(time, '%H:%M').strftime('%I:%M %p')
+    res = datetime.strptime(time, '%H:%M').strftime('%-I:%M %p')
 
     for k, v in replace.items():
         res = res.replace(k, v)
 
-    return re.sub('^0', '', res)
+    return res
 
 
 def time_converter1(time):
